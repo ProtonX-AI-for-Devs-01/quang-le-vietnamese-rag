@@ -1,0 +1,7 @@
+python-dotenv
+scrapy
+beautifulsoup4
+pandas
+pymongo
+sentence_transformers
+streamlit
