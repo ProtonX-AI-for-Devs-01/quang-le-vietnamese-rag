@@ -25,11 +25,13 @@ crawled_dataset_df.head()
 
 load_dotenv()  # Load environment variables from .env file
 mongo_uri = os.getenv('MONGO_URI')
+db_name = os.getenv('DB_NAME')
+db_collection = os.getenv('DB_COLLECTION')
 
 mongo_client = MongoClient().get_mongo_client(mongo_uri)
 
-db = mongo_client['sample_mflix']
-collection = db['flower_shop']
+db = mongo_client[db_name]
+collection = db[db_collection]
 documents = crawled_dataset_df.to_dict("records")
 collection.insert_many(documents)
 
