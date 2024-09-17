@@ -1,7 +1,7 @@
 from .mongo_client import MongoClient
 
 # default number of top matches to retrieve from vector search
-DEFAULT_SEARCH_LIMIT = 4
+DEFAULT_SEARCH_LIMIT = 2
 
 class RAG():
     def __init__(self, 
@@ -40,10 +40,10 @@ class RAG():
 
         project_stage = {
             "$project": {
-                "_id": 0,  # Exclude the _id field
-                "fullplot": 1,  # Include the plot field
-                "title": 1,  # Include the title field
-                "genres": 1, # Include the genres field
+                "_id": 0,
+                "title": 1,
+                "content": 1,
+                "price": 1,
                 "score": {
                     "$meta": "vectorSearchScore"  # Include the search score
                 }
@@ -61,5 +61,5 @@ class RAG():
         print('vector_search_result:', get_knowledge)
         enhanced_prompt = ""
         for result in get_knowledge:
-            enhanced_prompt += f"Title: {result.get('title', 'N/A')}, Plot: {result.get('fullplot', 'N/A')}\n"
+            enhanced_prompt += f"Title: {result.get('title', 'N/A')}, Content: {result.get('content', 'N/A')}, Price: {result.get('price', 'N/A')}\n"
         return enhanced_prompt
