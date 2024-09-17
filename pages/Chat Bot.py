@@ -8,7 +8,7 @@ logo = "http://localhost:3001/_next/image?url=https%3A%2F%2Fstorage.googleapis.c
 # Display the logo in the sidebar
 st.sidebar.image(logo, width=100)
 
-page = st.title("Chat with Ngrok")
+page = st.title("Flower shop chatbot")
 
 def clear_session_state():
     for key in st.session_state.keys():
@@ -20,42 +20,13 @@ import uuid  # Import the uuid module to generate unique IDs
 # Generate a random session ID
 session_id = str(uuid.uuid4())  # Creates a random UUID and converts it to a string
 
-# Initialize the session state for the backend URL
-if "flask_api_url" not in st.session_state:
-    print('-go 1')
-    st.session_state.flask_api_url = None
-
-# Function to display the dialog and set the URL
-@st.dialog("Setup Back end")
-def vote():
-    clear_session_state()
-    st.markdown(
-        """
-        Run the backend [here](https://colab.research.google.com/drive/1XIZikuY3KtZzfnDG3wEcBBIHJhhdKgU-?usp=sharing) and paste the Ngrok link below.
-        """
-    )
-    link = st.text_input("Backend URL", "")
-    if st.button("Save"):
-        st.session_state.flask_api_url = "{}/chat".format(link)  # Update ngrok URL
-        st.rerun()  # Re-run the app to close the dialog
-
-
-# Display the dialog only if the URL is not set
-if st.session_state.flask_api_url is None:
-    print('-go 2')
-    vote()
-
-# Once the URL is set, display it or proceed with other functionality
-if "flask_api_url" in st.session_state:
-    st.write(f"Backend is set to: {st.session_state.flask_api_url}")
-    # Continue with the rest of your application logic
-
+# URL of the Flask API
+st.session_state.flask_api_url = "http://localhost:5000/api/v1/chat"
 
 # Initialize chat history in session state
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 
-# URL of the Flask API
 
 # Display the chat history using chat UI
 for message in st.session_state.chat_history:

@@ -5,3 +5,6 @@ pandas
 pymongo
 sentence_transformers
 streamlit
+openai
+flask
+flask-cors

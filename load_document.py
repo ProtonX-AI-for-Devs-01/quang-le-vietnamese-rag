@@ -1,6 +1,6 @@
 import pandas as pd
 import json
-from mongo_client import MongoClient
+from rag.mongo_client import MongoClient
 from sentence_transformers import SentenceTransformer
 import os
 from dotenv import load_dotenv
