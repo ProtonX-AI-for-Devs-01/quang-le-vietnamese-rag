@@ -92,7 +92,7 @@ def chat():
             response = cached_result
         else:
             source_information = rag.enhance_prompt(query_embedding).replace('<br>', '\n')
-            combined_information = f"Câu hỏi : {query}, \ntrả lời khách hàng sử dụng thông tin\n###Sản Phẩm###\n{source_information}."
+            combined_information = f"Câu hỏi : {query}, \ntrả lời khách hàng sử dụng thông tin sản phẩm sau:\n###Sản Phẩm###\n{source_information}."
             response = reflection.chat(
                 session_id=session_id,
                 enhanced_message=combined_information,

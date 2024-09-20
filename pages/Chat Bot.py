@@ -2,13 +2,13 @@ import streamlit as st
 import requests
 # Set up the Streamlit interface
 
-# Load your logo image file
-logo = "http://localhost:3001/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fprotonx-cloud-storage%2Fcropped-cropped-ProtonX-logo-1-1-300x100.png&w=256&q=75"
+# # Load your logo image file
+logo = "https://hoatuoimymy.com/wp-content/uploads/2024/08/logo-hoa-tuoi-my-my-fn-n.png"
 
 # Display the logo in the sidebar
-st.sidebar.image(logo, width=100)
+st.sidebar.image(logo, width=227)
 
-page = st.title("Flower shop chatbot")
+page = st.title("Shop Hoa Tươi My My hân hạnh được phục vụ quí khách")
 
 def clear_session_state():
     for key in st.session_state.keys():
@@ -34,7 +34,7 @@ for message in st.session_state.chat_history:
         st.markdown(message["content"])
 
 # Accept user input
-if prompt := st.chat_input("What is up?"):
+if prompt := st.chat_input("Bạn có cần tư vấn sản phẩm gì hôm nay không?"):
     # Add user message to chat history
     st.session_state.chat_history.append({"role": "user", "content": prompt})
     # Display user message in chat message container
