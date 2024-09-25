@@ -19,7 +19,17 @@ python web_scraper.py
 python load_document.py
 ```
 
+- Start the server, the server will run from http://localhost:5000 by default:
+```
+python serve.py
+```
+
 - Run streamlit app to access chatbot:
 ```
 streamlit run Hello.py
+```
+
+- To run test suite:
+```
+python -m unittest
 ```
