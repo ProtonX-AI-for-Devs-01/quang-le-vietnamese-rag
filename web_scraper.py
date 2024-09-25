@@ -17,6 +17,7 @@ Tác giả: [ProtonX Team](https://protonx.io/courses/669f5abb02b79700125c9f32)
 import requests
 import xml.etree.ElementTree as ET
 import json
+import re
 
 # URLs of the sitemaps
 sitemap_urls = [
@@ -54,7 +55,7 @@ import pandas as pd
 import json
 
 # Specify the filename
-filename = '/content/all_urls.json'
+filename = 'all_urls.json'
 
 # Load the all_urls list from the JSON file
 with open(filename, 'r') as file:
@@ -99,7 +100,6 @@ class CustomSpider(scrapy.Spider):
 
         # Scraping the ck-content
         ck_contents = response.css('div.woocommerce-Tabs-panel--description')
-
         for ck_content in ck_contents:
             for element in ck_content.xpath('./*'):
                 # Extract the text from h2 and h3 tags
@@ -136,11 +136,13 @@ class CustomSpider(scrapy.Spider):
         data = {}
 
         if h1_tag and description:
+            description = re.sub("Hoa Tươi My My luôn là lựa chọn tốt nhất của những tín đồ yêu thích hoa. Với tiêu chí:\n- Hoa tươi mới được nhập về trong ngày\n- Cập nhật xu hướng hoa mới nhất trên thị trường\n- Các thiết kế hoa độc lạ và cực kỳ bắt mắt\n- Điện hoa nhanh chóng trong nội thành và các tỉnh lân cận\n- Hình ảnh hoa được cập nhật trước cho khách hàng khi gửi\n- Hoa đến tay đảm bảo còn tươi mới, đẹp và đáp ứng được mọi yêu cầu của khách\n- Hoàn trả tiền khi khách hàng không hài lòng\n- Bạn có thể đặt hoa nhanh ship 2-3h tại zalo shop\n", "", description)
             data = {
                 "url": response.url,  # Add the URL of the request
                 "content": description,
                 "price": price,
-                "title": h1_tag  # h1_tag is now guaranteed to be a string
+                "title": h1_tag,  # h1_tag is now guaranteed to be a string
+                "image_urls": image_urls
             }
 
             yield data

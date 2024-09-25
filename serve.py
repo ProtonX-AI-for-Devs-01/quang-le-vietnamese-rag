@@ -19,7 +19,8 @@ db_name = os.getenv('DB_NAME')
 db_collection = os.getenv('DB_COLLECTION')
 db_chat_history_collection = os.getenv('DB_CHAT_HISTORY_COLLECTION')
 semantic_cache_collection = os.getenv('SEMANTIC_CACHE_COLLECTION')
-rag_index_name = os.getenv('RAG_INDEX_NAME')
+vector_index_name = os.getenv('VECTOR_INDEX_NAME')
+keyword_index_name = os.getenv('KEYWORD_INDEX_NAME')
 semantic_cache_index_name = os.getenv('SEMANTIC_CACHE_INDEX_NAME')
 
 
@@ -36,7 +37,8 @@ rag = RAG(
     mongodb_uri=mongo_uri,
     db_name=db_name,
     db_collection=db_collection,
-    index_name=rag_index_name
+    vector_index_name=vector_index_name,
+    keyword_index_name=keyword_index_name
 )
 
 # Setup Semantic Router
@@ -91,7 +93,7 @@ def chat():
             print(f'Cache hit: {cached_result}')
             response = cached_result
         else:
-            source_information = rag.enhance_prompt(query_embedding).replace('<br>', '\n')
+            source_information = rag.enhance_prompt(query, query_embedding).replace('<br>', '\n')
             combined_information = f"Câu hỏi : {query}, \ntrả lời khách hàng sử dụng thông tin sản phẩm sau:\n###Sản Phẩm###\n{source_information}."
             response = reflection.chat(
                 session_id=session_id,

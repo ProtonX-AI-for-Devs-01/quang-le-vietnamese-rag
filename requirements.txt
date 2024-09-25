@@ -8,3 +8,6 @@ streamlit
 openai
 flask
 flask-cors
+spacy 
+scikit-learn
+pyvi
