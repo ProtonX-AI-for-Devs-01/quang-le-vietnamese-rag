@@ -32,9 +32,10 @@ productSample = [
 ]
 
 chitchatSample = [
+    "Hello shop",
+    "Chàp shop",
     "Chào bạn! Hôm nay bạn thế nào?",
     "Bạn có thể kể cho tôi nghe về ngày hôm nay của bạn không?",
-    "Bạn thích loài hoa nào nhất?",
     "Bạn có thể giúp tôi thư giãn một chút được không?",
     "Bạn thích thời tiết như thế nào?",
     "Bạn làm việc ở đây bao lâu rồi?",
@@ -51,8 +52,6 @@ chitchatSample = [
     "Bạn có thể dạy tôi cách chăm sóc hoa không?",
     "Công việc ở cửa hàng này có thú vị không?",
     "Bạn có gặp khách hàng thú vị nào không?",
-    "Bạn thích loài hoa nào trong cửa hàng nhất?",
-    "Bạn có biết loại hoa nào mang lại may mắn không?",
     "Bạn thích làm việc một mình hay cùng đồng nghiệp?",
     "Bạn có thể chia sẻ một bí quyết thành công trong cuộc sống không?",
     "Bạn có thói quen nào đặc biệt vào buổi sáng không?",
