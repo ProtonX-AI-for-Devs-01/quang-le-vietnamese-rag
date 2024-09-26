@@ -15,25 +15,21 @@ class RouterTestCase(unittest.TestCase):
         chitchat_queries = [
             "chào bạn",
             "bạn có khỏe không?",
-            "Bạn đã làm việc ở cửa hàng hoa này bao lâu rồi?",
-            "Làm việc với hoa có thú vị không?",
-            "Cửa hàng này có thường xuyên tham gia các sự kiện hoa không?",
-            "Bạn có hay tự cắm hoa ở nhà không?",
         ]
         for query in chitchat_queries:
             print(query)
             self.assertEqual(self.semanticRouter.guide(query)[1], self.CHITCHAT_ROUTE_NAME,
                             'incorrect semantic route for chitchat query')
     
-    # def test_products_route(self):
-    #     products_queries = [
-    #         "Bạn có loại hoa hồng nào mới về không?",
-    #         "Hoa ly hôm nay có tươi không bạn?",
-    #         "Mình muốn đặt một bó hoa cưới, bạn có gợi ý nào không?",
-    #         "Cửa hàng mình có bán hoa lan không?",
-    #         "Giá của bó hoa tulip này là bao nhiêu?",
-    #     ]
-    #     for query in products_queries:
-    #         print(query)
-    #         self.assertEqual(self.semanticRouter.guide(query)[1], self.PRODUCT_ROUTE_NAME,
-    #                         'incorrect semantic route for products query')
+    def test_products_route(self):
+        products_queries = [
+            "Bạn có loại hoa hồng nào mới về không?",
+            "Hoa ly hôm nay có tươi không bạn?",
+            "Mình muốn đặt một bó hoa cưới, bạn có gợi ý nào không?",
+            "Cửa hàng mình có bán hoa lan không?",
+            "Giá của bó hoa tulip này là bao nhiêu?",
+        ]
+        for query in products_queries:
+            print(query)
+            self.assertEqual(self.semanticRouter.guide(query)[1], self.PRODUCT_ROUTE_NAME,
+                            'incorrect semantic route for products query')

@@ -18,7 +18,7 @@ nlp = Vietnamese()
 nlp.add_pipe('sentencizer')
 
 # Semantic splitting based on sentence boundaries and similarity
-def semantic_splitting(text, threshold=0.3):
+def semantic_splitting(text, threshold=0.2):
     # Parse the document
     doc = nlp(text)
     sentences = [sent.text for sent in doc.sents]  # Extract sentences
