@@ -1,4 +1,6 @@
-## Vietnames RAG for an online flower shop ##
+## Vietnames RAG powered AI chatbot for an online flower shop ##
+
+<img width="717" alt="Screen Shot 2024-09-26 at 12 50 05 AM" src="https://github.com/user-attachments/assets/cfb152d4-38a8-4c15-95b1-90ce6e6ab70d">
 
 ### Running in local ###
 - Create an `.env` file and populate these ENV variables needed as required in  `.env.example`
