@@ -4,6 +4,51 @@
 
 ### Running in local ###
 - Create an `.env` file and populate these ENV variables needed as required in  `.env.example`
+- for `VECTOR_INDEX_NAME`, create a MongoDB Atlas vectorSearch index for the `DB_COLLECTION` collection:
+```
+{
+  "fields": [
+    {
+      "numDimensions": 768,
+      "path": "embedding",
+      "similarity": "cosine",
+      "type": "vector"
+    }
+  ]
+}
+```
+- for `KEYWORD_INDEX_NAME`, create a MongoDB Atlas search index for the `DB_COLLECTION` collection:
+```
+{
+  "mappings": {
+    "dynamic": false,
+    "fields": {
+      "title": [
+        {
+          "type": "string"
+        }
+      ]
+    }
+  }
+}
+```
+
+- for `SEMANTIC_CACHE_INDEX_NAME`, create a MongoDB Atlas vectorSearch index for the `SEMANTIC_CACHE_COLLECTION` collection:
+```
+{
+  "mappings": {
+    "dynamic": false,
+    "fields": {
+      "title": [
+        {
+          "type": "string"
+        }
+      ]
+    }
+  }
+}
+```
+
 - Install dependencies:
 ```
 python -m venv venv
