@@ -36,16 +36,18 @@
 - for `SEMANTIC_CACHE_INDEX_NAME`, create a MongoDB Atlas vectorSearch index for the `SEMANTIC_CACHE_COLLECTION` collection:
 ```
 {
-  "mappings": {
-    "dynamic": false,
-    "fields": {
-      "title": [
-        {
-          "type": "string"
-        }
-      ]
+  "fields": [
+    {
+      "numDimensions": 768,
+      "path": "embedding",
+      "similarity": "euclidean",
+      "type": "vector"
+    },
+    {
+      "path": "llm_string",
+      "type": "filter"
     }
-  }
+  ]
 }
 ```
 
